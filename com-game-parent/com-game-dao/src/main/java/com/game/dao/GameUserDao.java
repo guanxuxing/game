@@ -8,4 +8,6 @@ import com.game.entity.GameUser;
 public interface GameUserDao {
 
     public GameUser getOne(GameUser gameUser);
+
+    public Integer insertOne(GameUser gameUser);
 }

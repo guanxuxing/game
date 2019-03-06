@@ -1,13 +1,14 @@
 package com.game.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.game.biz.GameUserBiz;
 import com.game.common.CommonRequest;
+import com.game.common.CommonResponse;
+import com.game.controller.base.BaseController;
 import com.game.entity.GameUser;
+import com.game.util.PageData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
@@ -17,7 +18,7 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @Controller
-public class LoginController {
+public class LoginController extends BaseController{
 
     @Resource
     private GameUserBiz gameUserBiz;
@@ -50,14 +51,18 @@ public class LoginController {
         return mv;
     }
 
-    @ResponseBody
-    @RequestMapping(value = "login", produces = "application/json;charset=UTF-8")
-    public ModelAndView login(CommonRequest request){
-        log.info("--- receive.info --- {}", JSONObject.toJSON(request));
+    @RequestMapping(value = "reg")
+    public ModelAndView reg(GameUser gameUser){
         ModelAndView mv = new ModelAndView();
-        gameUserBiz.login(null);
-        mv.setViewName("/index");
+        gameUserBiz.reg(gameUser);
         return mv;
     }
+
+    @RequestMapping(value = "login")
+    public CommonResponse login(){
+        PageData pd = this.getPageData();
+        return gameUserBiz.login(pd);
+    }
+
 
 }

@@ -14,4 +14,11 @@
         AND pass_word = #{passWord}
     </select>
 
+    <insert id="insertOne" parameterType="com.game.entity.GameUser">
+        INSERT INTO game_user
+        (mobile, user_name, pass_word, add_time)
+        VALUES
+        (#{mobile}, #{userName}, #{passWord}, #{addTime})
+    </insert>
+
 </mapper>

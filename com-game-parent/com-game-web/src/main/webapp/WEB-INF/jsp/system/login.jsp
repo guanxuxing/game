@@ -6,6 +6,7 @@
 <html>
 <head>
     <base href="<%=basePath%>"><!-- jsp文件头和头部 -->
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <script>
         var _hmt = _hmt || [];
@@ -134,11 +135,11 @@
 </script>
 <body>
 
-<form name="loginform" action="index.jsp" method="post" onsubmit="return check_login_input()">
+<form name="loginform" action="login" method="post" >
     <img src="/static/images/logo.jpg" alt="picture"/><br/>
-    用户名：<input type="text" name="name"><br>
+    用户名：<input type="text" name="userName"><br>
     (6-16个小写字母或数字)<br>
-    密&nbsp;&nbsp;码：<input type="text" name="password"><br>
+    密&nbsp;&nbsp;码：<input type="text" name="passWord"><br>
     (6-16个小写字母或数字)<br>
     <input type="hidden" name="act" value="login" />
     <input type="submit" value="登录"><br><br>
