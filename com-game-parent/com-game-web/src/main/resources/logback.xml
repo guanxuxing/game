@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<property name="CONTEXT_NAME"  value="game" />
+	<!-- localEnviroment property -->
+ 	<property name="USER_LOG_HOME" value="/home/sense/appLogs/${CONTEXT_NAME}" />
+ 	<contextName>${CONTEXT_NAME}</contextName>
+ 	
+<appender name="mErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${USER_LOG_HOME}/${CONTEXT_NAME}_ERROR.log</File>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %contextName [%t] [%c:%M:%L] %m %n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>ERROR</level>
+    </filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${USER_LOG_HOME}/${CONTEXT_NAME}_ERROR%d.%i.log</fileNamePattern>
+      <!-- keep 60 days' worth of history -->
+      <maxHistory>60</maxHistory>
+      <timeBasedFileNamingAndTriggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 100MB -->
+        <maxFileSize>20MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+  </appender>
+  <appender name="mInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${USER_LOG_HOME}/${CONTEXT_NAME}_INFO.log</File>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %contextName [%t] [%c:%M:%L] %m %n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>INFO</level>
+    </filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${USER_LOG_HOME}/${CONTEXT_NAME}_INFO%d.%i.log</fileNamePattern>
+      <!-- keep 60 days' worth of history -->
+      <maxHistory>60</maxHistory>
+      <timeBasedFileNamingAndTriggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 100MB -->
+        <maxFileSize>30MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+  </appender>
+  <appender name="mDebugLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${USER_LOG_HOME}/${CONTEXT_NAME}_DEBUG.log</File>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %contextName [%t] [%c:%M:%L] %m %n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>DEBUG</level>
+    </filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+       <fileNamePattern>${USER_LOG_HOME}/${CONTEXT_NAME}_DEBUG%d.%i.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+       <timeBasedFileNamingAndTriggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 100MB -->
+        <maxFileSize>30MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+  </appender>
+ 
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder charset="UTF-8">
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %contextName [%t] [%c:%M:%L] %m %n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>DEBUG</level>
+    </filter>
+  </appender>
+  
+  <!-- <logger name="org.springframework" level="INFO"/>
+   <logger name="druid.sql" level="INFO"/>
+   <logger name="druid.sql.DataSource" level="INFO"/>
+   <logger name="druid.sql.Connection" level="INFO"/>
+    <logger name="druid.sql.Statement" level="INFO"/>
+   <logger name="druid.sql.ResultSet" level="INFO"/> -->
+   
+   <logger name="org.springframework" level="DEBUG"/>
+   <logger name="druid.sql" level="DEBUG"/>
+   <logger name="druid.sql.DataSource" level="DEBUG"/>
+   <logger name="druid.sql.Connection" level="DEBUG"/>
+    <logger name="druid.sql.Statement" level="DEBUG"/>
+   <logger name="druid.sql.ResultSet" level="DEBUG"/>
+   
+  
+ <root level="DEBUG">
+  <!-- <appender-ref ref="mInfoLog"/>
+ 	<appender-ref ref="mErrorLog"/>
+    <appender-ref ref="mDebugLog"/>-->
+      <!-- 下面只用于开发时在控制台显示 日志，上生产时 将其注释掉 -->
+     <appender-ref ref="STDOUT"/>
+  </root>
+</configuration>

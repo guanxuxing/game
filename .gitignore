@@ -1,0 +1,5 @@
+*.idea
+*.iml
+*.class
+/com-game-parent/.idea/artifacts/*
+target
