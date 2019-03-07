@@ -49,100 +49,57 @@
         }
         return true;
     }
-    function check_reg_input()//检查输入字符长度和是否只是数字和字母
-    {
-        if(document.regform.name.value.length>16 || document.regform.name.value.length<6)
-        {
-            alert("用户名长度必须是6-16个！");
-            document.regform.name.focus();
-            return false;
-        }
-        if(document.regform.password1.value.length>16 || document.regform.password1.value.length<6)
-        {
-            alert("密码长度必须是6-16个！");
-            document.regform.password1.focus();
-            return false;
-        }
-        var reg=/[^A-Za-z0-9]/g;
-        if(reg.test(document.regform.name.value)){
-            alert("用户名必须是字母或数字！");
-            document.regform.name.focus();
-            return false;
-        }
-        if(reg.test(document.regform.password1.value)){
-            alert("密码必须是字母或数字！");
-            document.regform.password.focus();
-            return false;
-        }
-        if(document.regform.password1.value != document.regform.password2.value)
-        {
-            alert("您两次输入的密码不一样！");
-            document.regform.password2.focus();
-            return false;
-        }
-        return true;
-    }
-    function check_chpwd_input()//检查输入字符长度和是否只是数字和字母
-    {
-        if(document.chpwdform.name.value.length>16 || document.chpwdform.name.value.length<6)
-        {
-            alert("用户名长度必须是6-16个！");
-            document.chpwdform.name.focus();
-            return false;
-        }
-        if(document.chpwdform.oldpwd.value.length>16 || document.chpwdform.oldpwd.value.length<6)
-        {
-            alert("密码长度必须是6-16个！");
-            document.chpwdform.oldpwd.focus();
-            return false;
-        }
-        if(document.chpwdform.password1.value.length>16 || document.chpwdform.password1.value.length<6)
-        {
-            alert("密码长度必须是6-16个！");
-            document.chpwdform.password1.focus();
-            return false;
-        }
-        var reg=/[^A-Za-z0-9]/g;
-        if(reg.test(document.chpwdform.name.value)){
-            alert("用户名必须是字母或数字！");
-            document.chpwdform.name.focus();
-            return false;
-        }
-        if(reg.test(document.chpwdform.oldpwd.value)){
-            alert("密码必须是字母或数字！");
-            document.chpwdform.oldpwd.focus();
-            return false;
-        }
-        if(reg.test(document.chpwdform.password1.value)){
-            alert("密码必须是字母或数字！");
-            document.chpwdform.password1.focus();
-            return false;
-        }
-        if(document.chpwdform.oldpwd.value == document.chpwdform.password1.value)
-        {
-            alert("您的新密码和旧密码一样！");
-            document.chpwdform.password1.focus();
-            return false;
-        }
-        if(document.chpwdform.password1.value != document.chpwdform.password2.value)
-        {
-            alert("您两次输入的密码不一样！");
-            document.chpwdform.password2.focus();
-            return false;
-        }
-        return true;
-    }
+
 </script>
 <body>
 
-<form name="loginform" action="login" method="post" >
+<script type="text/javascript">
+
+    function loginServer(){
+        if (check_login_input()) {
+            var loginname = $("#username").val();
+            var password = $("#password").val();
+            var code =loginname+","+password ;
+            $.ajax({
+                type: "POST",
+                url: 'login',
+                data: {KEYDATA:code,tm:new Date().getTime()},
+                dataType:'json',
+                cache: false,
+                success: function(data){
+                    if("0000" == data.code){
+                        alert("登录成功");
+                        window.location.href="game/index";
+                    }else{
+                        alert("信息有误");
+                        window.location.href="goloin";
+                        $("#username").tips({
+                            side : 1,
+                            msg : data.result,
+                            bg : '#FF5080',
+                            time : 5
+                        });
+                    }
+                },
+                error : function(data) {
+                    alert("登录失败");
+                    window.location.href="goloin";
+                }
+            });
+
+        }
+
+    }
+
+</script>
+
+<form name="loginform"  >
     <img src="/static/images/logo.jpg" alt="picture"/><br/>
-    用户名：<input type="text" name="userName"><br>
+    用户名：<input type="text" name="name" id="username"><br>
     (6-16个小写字母或数字)<br>
-    密&nbsp;&nbsp;码：<input type="text" name="passWord"><br>
+    密&nbsp;&nbsp;码：<input type="password" name="password" id="password"><br>
     (6-16个小写字母或数字)<br>
-    <input type="hidden" name="act" value="login" />
-    <input type="submit" value="登录"><br><br>
+    <input type="button" value="登录" onclick="loginServer()"><br><br>
     <a href="index.jsp?act=reg">注册</a>   <a href="index.jsp?act=chpwd">修改密码</a><br>
     <a href="http://db.xk007.cn/">夺宝中华官网首页</a><br>
 </form>

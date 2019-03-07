@@ -15,5 +15,6 @@ public class GameUser extends BaseEntity  {
     private String mobile;
     private String userName;
     private String passWord;
+    private String mark;
 
 }

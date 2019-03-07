@@ -11,14 +11,16 @@
         FROM game_user
         WHERE
         user_name = #{userName}
+        <if test="null!=passWord and ''!=passWord">
         AND pass_word = #{passWord}
+        </if>
     </select>
 
     <insert id="insertOne" parameterType="com.game.entity.GameUser">
         INSERT INTO game_user
-        (mobile, user_name, pass_word, add_time)
+        (mobile, user_name, pass_word, mark, add_time)
         VALUES
-        (#{mobile}, #{userName}, #{passWord}, #{addTime})
+        (#{mobile}, #{userName}, #{passWord}, #{mark}, #{addTime})
     </insert>
 
 </mapper>

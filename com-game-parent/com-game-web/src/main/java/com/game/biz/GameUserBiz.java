@@ -11,5 +11,5 @@ public interface GameUserBiz {
 
     public CommonResponse login(PageData pd);
 
-    public Boolean reg(GameUser gameUser);
+    public CommonResponse reg(PageData pd);
 }

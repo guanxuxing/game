@@ -21,9 +21,9 @@
 
 <body>
 请选择游戏分区：<br> <br>
-<a href="./db2.jsp?_user=qaz111&sign=a619087444b1ebbd8c4d7c9384f27559">三区：争霸江湖(新)</a><br> <br>
-<a href="./db1.jsp?_user=qaz111&sign=a619087444b1ebbd8c4d7c9384f27559">二区：纵横四海</a><br> <br>
-<a href="./db0.jsp?_user=qaz111&sign=a619087444b1ebbd8c4d7c9384f27559">一区：风云再起</a><br> <br>
+<a href="route/gfp">三区：争霸江湖(新)</a><br> <br>
+<a href="route/gsp">二区：纵横四海</a><br> <br>
+<a href="route/gtp">一区：风云再起</a><br> <br>
 <a href="http://db.xk007.cn/">夺宝中华官网首页</a><br>
 
 </body>

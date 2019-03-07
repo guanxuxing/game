@@ -6,6 +6,9 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
     <base href="<%=basePath%>"><!-- jsp文件头和头部 -->
     <script>
         var _hmt = _hmt || [];
@@ -21,33 +24,7 @@
 
 </head>
 <script>
-    function check_login_input()//检查输入字符长度和是否只是数字和字母
-    {
-        if(document.loginform.name.value.length>16 || document.loginform.name.value.length<6)
-        {
-            alert("用户名长度必须是6-16个！");
-            document.loginform.name.focus();
-            return false;
-        }
-        if(document.loginform.password.value.length>16 || document.loginform.password.value.length<6)
-        {
-            alert("密码长度必须是6-16个！");
-            document.loginform.password.focus();
-            return false;
-        }
-        var reg=/[^A-Za-z0-9]/g;
-        if(reg.test(document.loginform.name.value)){
-            alert("用户名必须是字母或数字！");
-            document.loginform.name.focus();
-            return false;
-        }
-        if(reg.test(document.loginform.password.value)){
-            alert("密码必须是字母或数字！");
-            document.loginform.password.focus();
-            return false;
-        }
-        return true;
-    }
+
     function check_reg_input()//检查输入字符长度和是否只是数字和字母
     {
         if(document.regform.name.value.length>16 || document.regform.name.value.length<6)
@@ -81,70 +58,59 @@
         }
         return true;
     }
-    function check_chpwd_input()//检查输入字符长度和是否只是数字和字母
-    {
-        if(document.chpwdform.name.value.length>16 || document.chpwdform.name.value.length<6)
-        {
-            alert("用户名长度必须是6-16个！");
-            document.chpwdform.name.focus();
-            return false;
-        }
-        if(document.chpwdform.oldpwd.value.length>16 || document.chpwdform.oldpwd.value.length<6)
-        {
-            alert("密码长度必须是6-16个！");
-            document.chpwdform.oldpwd.focus();
-            return false;
-        }
-        if(document.chpwdform.password1.value.length>16 || document.chpwdform.password1.value.length<6)
-        {
-            alert("密码长度必须是6-16个！");
-            document.chpwdform.password1.focus();
-            return false;
-        }
-        var reg=/[^A-Za-z0-9]/g;
-        if(reg.test(document.chpwdform.name.value)){
-            alert("用户名必须是字母或数字！");
-            document.chpwdform.name.focus();
-            return false;
-        }
-        if(reg.test(document.chpwdform.oldpwd.value)){
-            alert("密码必须是字母或数字！");
-            document.chpwdform.oldpwd.focus();
-            return false;
-        }
-        if(reg.test(document.chpwdform.password1.value)){
-            alert("密码必须是字母或数字！");
-            document.chpwdform.password1.focus();
-            return false;
-        }
-        if(document.chpwdform.oldpwd.value == document.chpwdform.password1.value)
-        {
-            alert("您的新密码和旧密码一样！");
-            document.chpwdform.password1.focus();
-            return false;
-        }
-        if(document.chpwdform.password1.value != document.chpwdform.password2.value)
-        {
-            alert("您两次输入的密码不一样！");
-            document.chpwdform.password2.focus();
-            return false;
-        }
-        return true;
-    }
+
 </script>
 <body>
 
-<form name="regform" action="index.jsp" method="post" onsubmit="return check_reg_input()">
+<script type="text/javascript">
+    function regServer(){
+        if (check_reg_input()) {
+            var loginname = $("#username").val();
+            var password = $("#password").val();
+            var code =loginname+","+password ;
+            $.ajax({
+                type: "POST",
+                url: 'reg',
+                data: {KEYDATA:code,tm:new Date().getTime()},
+                dataType:'json',
+                cache: false,
+                success: function(data){
+                    if("0000" == data.code){
+                        alert("注册成功");
+                        window.location.href="index.jsp";
+                    }else if("0004" == data.code){
+                        alert("玩家已存在");
+                       // window.location.href="goreg";
+                    }
+                    else{
+                        alert("注册失败");
+                        window.location.href="goreg";
+                        $("#username").tips({
+                            side : 1,
+                            msg : data.result,
+                            bg : '#FF5080',
+                            time : 5
+                        });
+                    }
+                },
+                error : function(data) {
+                    alert("注册失败");
+                    window.location.href="goreg";
+                }
+            });
+        }
+    }
+</script>
+
+<form name="regform" method="post" >
     <img src="/static/images/logo.jpg" alt="picture"/><br/>
     欢迎大家来到夺宝中华侠客行游戏世界！<br>
-    用户名：<input type="text" name="name"><br>
+    用户名：<input type="text" name="name" id="username"><br>
     (6-16个小写字母或数字)<br>
-    密&nbsp;&nbsp;码：<input type="text" name="password1"><br>
+    密&nbsp;&nbsp;码：<input type="password" name="password1" id="password"><br>
     (6-16个小写字母或数字)<br>
-    重复密码：<input type="text" name="password2"><br><br>
-    验证码：<input type="text" name="incode"><img src="code.jsp"/><br>
-    <input type="hidden" name="act" value="reg" />
-    <input type="submit" value="确定"><br><br>
+    重复密码：<input type="password" name="password2"><br><br>
+    <input type="button" value="确定" onclick="regServer();"><br><br>
     <a href="index.jsp">返回</a><br>
 </form>
 <p>本站为夺宝中华官方唯一正版<br>本站网址：db.xk007.cn<br><br>京ICP备17017840号-1</p>

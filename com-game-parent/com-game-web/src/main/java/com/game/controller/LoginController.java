@@ -1,7 +1,6 @@
 package com.game.controller;
 
 import com.game.biz.GameUserBiz;
-import com.game.common.CommonRequest;
 import com.game.common.CommonResponse;
 import com.game.controller.base.BaseController;
 import com.game.entity.GameUser;
@@ -51,17 +50,25 @@ public class LoginController extends BaseController{
         return mv;
     }
 
+    @ResponseBody
     @RequestMapping(value = "reg")
-    public ModelAndView reg(GameUser gameUser){
-        ModelAndView mv = new ModelAndView();
-        gameUserBiz.reg(gameUser);
-        return mv;
+    public CommonResponse reg(){
+        PageData pd = this.getPageData();
+        return gameUserBiz.reg(pd);
     }
 
+    @ResponseBody
     @RequestMapping(value = "login")
     public CommonResponse login(){
         PageData pd = this.getPageData();
         return gameUserBiz.login(pd);
+    }
+
+    @RequestMapping(value = "game/index")
+    public ModelAndView mainIndex(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("data/game_index");
+        return mv;
     }
 
 
