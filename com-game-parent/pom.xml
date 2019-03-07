@@ -374,5 +374,39 @@
 
   <build>
     <finalName>game</finalName>
+    <plugins>
+      <!-- 修改过滤器的占位�?-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <configuration>
+          <useDefaultDelimiters>false</useDefaultDelimiters>
+          <delimiters>
+            <delimiter>$[*]</delimiter>
+          </delimiters>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.4</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${java-version}</source>
+          <target>${java-version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+          <fork>true</fork>
+          <compilerArguments>
+            <verbose />
+            <bootclasspath>${java.home}/lib/rt.jar${path.separator}${java.home}/lib/jce.jar</bootclasspath>
+          </compilerArguments>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

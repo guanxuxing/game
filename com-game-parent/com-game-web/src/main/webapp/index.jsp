@@ -136,9 +136,9 @@
 <body>
 <div data-role="page">
 
-    <div data-role="header">
+ <%--   <div data-role="header">
         <h1>head</h1>
-    </div>
+    </div>--%>
 
     <div data-role="content">
         <img src="static/images/logo.jpg" alt="picture"/><br/>
@@ -162,9 +162,9 @@
 
     </div>
 
-    <div data-role="footer">
+   <%-- <div data-role="footer">
         <h1>foot</h1>
-    </div>
+    </div>--%>
 
 </div>
 </body>

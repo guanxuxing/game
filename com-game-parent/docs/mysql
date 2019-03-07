@@ -1,0 +1,6 @@
+
+全局游戏装备: game_equipped
+全局游戏等级: game_level
+全局怪兽    : game_monster
+
+玩家记录:    game_user_action_log
