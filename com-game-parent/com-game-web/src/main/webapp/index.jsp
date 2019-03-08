@@ -145,7 +145,7 @@
         【夺宝中华侠客行】--可以玩的武侠小说，高自由度的江湖冒险游戏。<br/>
         你可以扮演侠客、杀手、富翁、美人、高手、魔头。<br/>
         这里是真正的武林，在刀光剑影中，谱写你自己的传奇。<br/>
-        <a style="font-size:20px;" href="/goloin">登录</a>    <a style="font-size:20px;" href="/goreg">注册</a>    <a style="font-size:20px;" href="/goupw">修改密码</a><br/> <br/>
+        <a style="font-size:20px;" href="goloin">登录</a>    <a style="font-size:20px;" href="goreg">注册</a>    <a style="font-size:20px;" href="goupw">修改密码</a><br/> <br/>
         <img src="static/images/logo2.jpg" alt="picture"/><br/>
         游戏简介：<br/>
         和乔帮主一起大闹聚贤庄，和大理段公子一起追神仙姐姐，和华山令狐少侠一起大战东方教主，浪迹江湖，纵横四海！通过奇遇得到独孤九剑，乾坤大挪移，蛤蟆功，辟邪剑法，神功在手，天下你有！<br/>
@@ -158,7 +158,7 @@
         5.打开即玩：支持所有电脑浏览器及所有手机浏览器，直接输入网址就可以访问。<br/>
         6.制作精良：中国第一款手机游戏-“夺宝中华”原创团队倾力打造。<br/>
         7.游戏网址：db.xk007.cn，QQ群：228462227，不删档内测火热开启中！<br/>
-        <p>本站为夺宝中华官方唯一正版<br><a href="/goright">用户服务条款</a><br><!-- <a href="index.jsp?act=intro">公司简介</a> | <a href="index.jsp?act=product">产品介绍</a><br><a href="index.jsp?act=about">关于我们</a> | <a href="index.jsp?act=contract">联系方式</a><br> --><br>京ICP备17017840号-1</p>
+        <p>本站为夺宝中华官方唯一正版<br><a href="goright">用户服务条款</a><br><!-- <a href="index.jsp?act=intro">公司简介</a> | <a href="index.jsp?act=product">产品介绍</a><br><a href="index.jsp?act=about">关于我们</a> | <a href="index.jsp?act=contract">联系方式</a><br> --><br>京ICP备17017840号-1</p>
 
     </div>
 

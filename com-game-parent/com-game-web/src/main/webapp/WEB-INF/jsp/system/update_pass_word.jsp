@@ -135,7 +135,7 @@
 <body>
 
 <form name="chpwdform" action="index.jsp" method="post" onsubmit="return check_chpwd_input()">
-    <img src="/static/images/logo.jpg" alt="picture"/><br/>
+    <img src="static/images/logo.jpg" alt="picture"/><br/>
     欢迎大家来到夺宝中华侠客行游戏世界！<br>
     用户名：<input type="text" name="name"><br>
     旧密码：<input type="text" name="oldpwd"><br>

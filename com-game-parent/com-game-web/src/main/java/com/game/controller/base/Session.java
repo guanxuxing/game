@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
  */
 public class Session {
 
+    public static final String GAME_USER = "game_user";
+
     /**
      * 得到request对象
      */
@@ -21,6 +23,6 @@ public class Session {
 
     public static void addSeesion(GameUser gameUser){
         HttpSession mapSession = getRequest().getSession();
-        mapSession.setAttribute(String.valueOf(gameUser.getId()), gameUser);
+        mapSession.setAttribute(GAME_USER, gameUser);
     }
 }

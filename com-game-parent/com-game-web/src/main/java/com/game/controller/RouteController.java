@@ -45,6 +45,28 @@ public class RouteController extends BaseController{
         return mv;
     }
 
+    /***
+     * 冒险江湖
+     * @return
+     */
+    @RequestMapping(value = "gorisk")
+    public ModelAndView goRisk() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("game/user_risk_all");
+        return mv;
+    }
+
+    /***
+     * 地图方向匹配
+     * @return
+     */
+    @RequestMapping(value = "mapaddress")
+    public ModelAndView mapAddress(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("game/user_risk_all");
+        return mv;
+    }
+
 
 
 }

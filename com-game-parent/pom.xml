@@ -373,7 +373,7 @@
   </dependencies>
 
   <build>
-    <finalName>game</finalName>
+    <finalName>game_word</finalName>
     <plugins>
       <!-- 修改过滤器的占位�?-->
       <plugin>

@@ -94,7 +94,7 @@
 </script>
 
 <form name="loginform"  >
-    <img src="/static/images/logo.jpg" alt="picture"/><br/>
+    <img src="static/images/logo.jpg" alt="picture"/><br/>
     用户名：<input type="text" name="name" id="username"><br>
     (6-16个小写字母或数字)<br>
     密&nbsp;&nbsp;码：<input type="password" name="password" id="password"><br>

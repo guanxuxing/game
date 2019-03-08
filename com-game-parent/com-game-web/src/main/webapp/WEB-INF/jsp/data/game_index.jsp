@@ -21,9 +21,9 @@
 
 <body>
 请选择游戏分区：<br> <br>
-<a href="route/gfp">三区：争霸江湖(新)</a><br> <br>
+<a href="route/gtp">三区：争霸江湖(新)</a><br> <br>
 <a href="route/gsp">二区：纵横四海</a><br> <br>
-<a href="route/gtp">一区：风云再起</a><br> <br>
+<a href="route/gfp">一区：风云再起</a><br> <br>
 <a href="http://db.xk007.cn/">夺宝中华官网首页</a><br>
 
 </body>

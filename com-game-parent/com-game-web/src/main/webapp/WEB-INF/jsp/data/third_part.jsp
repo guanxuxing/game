@@ -16,7 +16,7 @@
     <br/>吾主沉浮一式「天女散花」，自水袖中散出一片花雨，青烟如梦被花影迷蒙了双眼，与吾主沉浮擦肩而过！
     <br/><img src="/images/dbzh9g.jpg" alt="picture"/><br/><br/> 天下风云出我辈，一入江湖岁月催
     <br/>皇图霸业谈笑中，不胜人生一场醉<br/>
-    <br/>【<a href="/db2.jsp?_cmd=4+">开始江湖冒险</a>】<br/>
+    <br/>【<a href="gorisk">开始江湖冒险G</a>】<br/>
     <br/>【<a href="/db2.jsp?_cmd=5+">长安客栈</a>|<a href="/db2.jsp?_cmd=6+">新手村</a>】<br/>
     <br/>【<a href="/db2.jsp?_cmd=7+">打怪</a>|
     <a href="/db2.jsp?_cmd=8+">捡钱</a>|<a href="/db2.jsp?_cmd=9+">挂机</a>|
