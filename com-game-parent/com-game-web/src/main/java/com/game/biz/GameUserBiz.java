@@ -12,4 +12,6 @@ public interface GameUserBiz {
     public CommonResponse login(PageData pd);
 
     public CommonResponse reg(PageData pd);
+
+    public CommonResponse upd(PageData pd);
 }

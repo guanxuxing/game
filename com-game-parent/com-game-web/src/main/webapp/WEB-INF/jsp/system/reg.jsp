@@ -103,8 +103,8 @@
 </script>
 
 <form name="regform" method="post" >
-    <img src="static/images/logo.jpg" alt="picture"/><br/>
-    欢迎大家来到夺宝中华侠客行游戏世界！<br>
+    <img src="<%= basePath%>/static/images/logo.jpg" alt="picture"/><br/>
+    欢迎大家来到夺宝中华客行游戏世界！<br>
     用户名：<input type="text" name="name" id="username"><br>
     (6-16个小写字母或数字)<br>
     密&nbsp;&nbsp;码：<input type="password" name="password1" id="password"><br>

@@ -5,6 +5,7 @@ import com.game.common.CommonResponse;
 import com.game.controller.base.Session;
 import com.game.dao.GameUserDao;
 import com.game.entity.GameUser;
+import com.game.util.Constant;
 import com.game.util.PageData;
 import com.game.util.cont.ErrorCode;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2019-03-05.
@@ -61,5 +64,39 @@ public class GameUserBizImpl implements GameUserBiz {
             return new CommonResponse(ErrorCode.E0000.getCode(), ErrorCode.E0000.getValue());
         }
         return new CommonResponse(ErrorCode.E0003.getCode(), ErrorCode.E0003.getValue());
+    }
+
+    public CommonResponse upd(PageData pd) {
+        CommonResponse commonResponse = new CommonResponse(ErrorCode.E0001.getCode(), ErrorCode.E0001.getValue());
+        GameUser gameUser = new GameUser();
+        String keyData = pd.get("KEYDATA").toString();
+        String[] data = keyData.split(",");
+        String userName = data[0];
+        String oldPassWord = data[1];
+        String newPassWord = data[2];
+        oldPassWord = new SimpleHash("SHA-1", userName,
+                oldPassWord).toString(); // 密码加密
+        gameUser.setUserName(userName);
+        gameUser.setPassWord(oldPassWord);
+        gameUser = gameUserDao.getOne(gameUser);
+        if (null == gameUser) {
+            // 用户信息不存在
+            commonResponse = new CommonResponse(ErrorCode.E0003.getCode(), ErrorCode.E0003.getValue());
+        }else {
+            // 修改密码
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("mark", newPassWord + "|" + newPassWord.substring(0,3));
+            map.put("userName", userName);
+            map.put("oldPassWord", oldPassWord);
+            newPassWord = new SimpleHash("SHA-1", userName,
+                    newPassWord).toString(); // 密码加密
+            map.put("newPassWord", newPassWord);
+            map.put("updateTime", String.valueOf(System.currentTimeMillis()));
+            Integer key = gameUserDao.updatePwd(map);
+            if (Constant.SUCCESS_CODE.equals(key)) {
+                commonResponse = new CommonResponse(ErrorCode.E0000.getCode(), ErrorCode.E0000.getValue());
+            }
+        }
+        return commonResponse;
     }
 }

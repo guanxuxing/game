@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.GamePubChatDao">
+
+    <insert id="insertOne" parameterType="com.game.entity.GamePubChat">
+        INSERT INTO game_pub_chat
+        (user_id, chat_text, chat_time, add_time)
+        VALUES
+        (#{userId}, #{chatText}, #{chatTime}, #{addTime})
+    </insert>
+
+    <select id="getList" resultType="java.util.Map">
+        SELECT
+        a.user_id AS userId,
+        a.chat_text AS chatText,
+        DATE_FORMAT(a.chat_time, '%Y-%m-%d %H:%i:%S') AS chatTime,
+        b.user_name AS userName,
+        b.nick_name AS nickName
+        FROM game_pub_chat a
+        LEFT JOIN game_user b ON a.user_id = b.id
+        ORDER by a.id DESC
+    </select>
+
+</mapper>

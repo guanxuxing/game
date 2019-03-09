@@ -43,6 +43,10 @@ public class LoginController extends BaseController{
         return mv;
     }
 
+    /***
+     * 用户服务条款
+     * @return
+     */
     @RequestMapping(value = "goright")
     public ModelAndView goRight(){
         ModelAndView mv = new ModelAndView();
@@ -50,6 +54,10 @@ public class LoginController extends BaseController{
         return mv;
     }
 
+    /***
+     * 注册
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "reg")
     public CommonResponse reg(){
@@ -57,6 +65,10 @@ public class LoginController extends BaseController{
         return gameUserBiz.reg(pd);
     }
 
+    /***
+     * 登录
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "login")
     public CommonResponse login(){
@@ -64,6 +76,21 @@ public class LoginController extends BaseController{
         return gameUserBiz.login(pd);
     }
 
+    /***
+     * 修改密码
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "upd")
+    public CommonResponse udpatePassWord() {
+        PageData pd = this.getPageData();
+        return gameUserBiz.upd(pd);
+    }
+
+    /***
+     * 登录成功之后游戏首页
+     * @return
+     */
     @RequestMapping(value = "game/index")
     public ModelAndView mainIndex(){
         ModelAndView mv = new ModelAndView();

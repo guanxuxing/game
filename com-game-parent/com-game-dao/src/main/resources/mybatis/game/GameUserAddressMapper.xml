@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.GameUserAddressDao">
+
+    <select id="getOne" parameterType="java.lang.Long" resultType="com.game.entity.GameUserAddress">
+        SELECT
+        user_id AS userId,
+        address_code AS addressCode
+        FROM game_user_address
+        WHERE
+        user_id = #{userId}
+        ORDER BY id DESC limit 1
+    </select>
+
+    <insert id="insertOne" parameterType="com.game.entity.GameUserAddress">
+        INSERT INTO game_user_address
+        (user_id, address_code, add_time)
+        VALUES
+        (#{userId}, #{addressCode}, #{addTime})
+    </insert>
+
+    <update id="updateGameUserAddress" parameterType="com.game.entity.GameUserAddress">
+        UPDATE game_user_address
+        SET address_code=#{addressCode},update_time=#{updateTime}
+        WHERE user_id = #{userId}
+    </update>
+    
+    <select id="getUsersByCode" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT
+        a.user_id AS userId,
+        a.address_code AS addressCode,
+        b.user_name AS userName,
+        b.nick_name AS nickName
+        FROM game_user_address a
+        left JOIN game_user b on a.user_id = b.id
+        WHERE address_code = #{addressCode} AND a.user_id != #{userId}
+    </select>
+
+</mapper>

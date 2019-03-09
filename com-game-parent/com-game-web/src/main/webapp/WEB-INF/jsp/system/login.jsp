@@ -94,13 +94,13 @@
 </script>
 
 <form name="loginform"  >
-    <img src="static/images/logo.jpg" alt="picture"/><br/>
+    <img src="<%= basePath%>/static/images/logo.jpg" alt="picture"/><br/>
     用户名：<input type="text" name="name" id="username"><br>
     (6-16个小写字母或数字)<br>
     密&nbsp;&nbsp;码：<input type="password" name="password" id="password"><br>
     (6-16个小写字母或数字)<br>
     <input type="button" value="登录" onclick="loginServer()"><br><br>
-    <a href="index.jsp?act=reg">注册</a>   <a href="index.jsp?act=chpwd">修改密码</a><br>
+    <a href="goreg">注册</a>   <a href="goupw">修改密码</a><br>
     <a href="http://db.xk007.cn/">夺宝中华官网首页</a><br>
 </form>
 

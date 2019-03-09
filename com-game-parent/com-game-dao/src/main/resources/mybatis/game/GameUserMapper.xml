@@ -23,4 +23,10 @@
         (#{mobile}, #{userName}, #{passWord}, #{mark}, #{addTime})
     </insert>
 
+    <update id="updatePwd" parameterType="java.util.Map">
+        UPDATE game_user
+        SET pass_word = #{newPassWord},mark= #{mark}, update_time = #{updateTime}
+        WHERE user_name = #{userName} AND pass_word = #{oldPassWord}
+    </update>
+
 </mapper>

@@ -15,6 +15,7 @@ import java.util.Map;
  * 南 south
  * 北 north　
  * R 返回长安客栈
+ * F 开始冒险江湖
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -27,10 +28,11 @@ public class MapConstant {
     private List<String> npc;
     private List<String> direction;
 
-    private String east;
-    private String west;
-    private String south;
-    private String north;
+    private List<DirectionAim> directionAim;
+    private String textDesc;
+    private String npcDesc;
+
+    private List<Map<String, String>> codeUsers;
 
     public static Map<String, MapConstant> NPC_MAP = new HashMap<String, MapConstant>();
 
@@ -49,7 +51,7 @@ public class MapConstant {
 
         MapConstant c0 = new MapConstant("0", "首页", Arrays.asList("本页包含你的账号和密码信息","新手村","开始江湖"),
                 Arrays.asList(""),
-                Arrays.asList("a#this.enx#开始江湖冒险", "4#江湖大厅论坛#论坛", "5#长安客栈#长安客栈") );
+                Arrays.asList("F#this.enx#开始江湖冒险#P", "4#江湖大厅论坛#论坛#P", "5#长安客栈#长安客栈#→") );
          NPC_MAP.put(c0.getCode(), c0);
 
         MapConstant c1 = new MapConstant("1", "新手村广场", Arrays.asList("欢迎你来到风云变幻的江湖","北：镜湖(挣钱) ↑","西：长安客栈(江湖起点) ←"),
@@ -60,7 +62,7 @@ public class MapConstant {
 
         MapConstant c2 = new MapConstant("2", "镜湖", Arrays.asList("这里可以钓鱼挣钱","还可以搜索地上捡钱"),
                 Arrays.asList(""),
-                Arrays.asList("3#N#新手村当铺#北：当铺(存物品) ↑", "9#W#新手村商店：西：商店(买东西) ←",
+                Arrays.asList("3#N#新手村当铺#北：当铺(存物品) ↑", "9#W#新手村商店#西：商店(买东西) ←",
                         "10#E#新手村钱庄#东：钱庄(存取钱) →", "5#R#长安客栈#返回长安客栈", "1#S#新手村广场#南：新手村广场 ↓") );
          NPC_MAP.put(c2.getCode(), c2);
 

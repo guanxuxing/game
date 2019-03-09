@@ -25,4 +25,9 @@ public class Session {
         HttpSession mapSession = getRequest().getSession();
         mapSession.setAttribute(GAME_USER, gameUser);
     }
+
+    public static GameUser getCurrentUser(){
+        HttpSession mapSession = getRequest().getSession();
+        return (GameUser) mapSession.getAttribute(GAME_USER);
+    }
 }
