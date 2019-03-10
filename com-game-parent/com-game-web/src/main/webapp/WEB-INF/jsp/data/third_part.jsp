@@ -17,7 +17,6 @@
     <br/>系统消息:七袋弟子打败了天下无敌获赏金九十两白银！
     <br/>吾主沉浮身形一转，「银刀」刀光不定，斩向青烟如梦的右腿，结果「嗤」地一声划出一道血淋淋的伤口！
     <br/>吾主沉浮一式「天女散花」，自水袖中散出一片花雨，青烟如梦被花影迷蒙了双眼，与吾主沉浮擦肩而过--%>
-    ！
     <br/><img src="<%= basePath%>/static/images/logo2.jpg" alt="picture"/><br/><br/> 天下风云出我辈，一入江湖岁月催
     <br/>皇图霸业谈笑中，不胜人生一场醉<br/>
 
@@ -25,17 +24,22 @@
 <c:when test="${null!=mc}">
     <div>你来到了${mc.name}</div>
     <div>${mc.textDesc}</div>
-    <c:if test="${mc.npcDesc!=null && ''!=mc.npcDesc}">
+    <c:if test="${mc.npcCode!=null && ''!=mc.npcCode}">
         <div>
-        你遇到了<a href=""> ${mc.npcDesc}(npc) </a>
+        你遇到了<%--<a href="<%=basePath%>route/gnl?a_c_id=${pd.a_c_id}"> ${mc.npcName}(npc) </a>--%>
+            <c:forEach items="${mc.planCodeName}" var="item">
+                【 <a href="<%=basePath%>route/gnl?a_c_id=${pd.a_c_id}">${item.npcName}</a> 】
+            </c:forEach>
+            [npc]
         </div>
      </c:if>
   <c:if test="${null != mc.codeUsers && mc.codeUsers.size()>0 }">
     <p>  你遇到了
       <c:forEach items="${mc.codeUsers}" var="item">
-          <a href="">${item.nickName}、</a>
-          </p>
+          <a href="<%=basePath%>route/gudl?a_c=${pd.riskCode}">${item.nickName}、</a>
       </c:forEach>
+        (玩家)
+    </p>
   </c:if>
     请选择你的行走方向：
     <div style="text-align:center;">

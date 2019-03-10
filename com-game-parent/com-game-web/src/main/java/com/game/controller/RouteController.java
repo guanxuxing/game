@@ -4,6 +4,7 @@ import com.game.biz.GamePubChatBiz;
 import com.game.biz.RouteBiz;
 import com.game.common.CommonResponse;
 import com.game.controller.base.BaseController;
+import com.game.entity.GameNpc;
 import com.game.util.MapConstant;
 import com.game.util.PageData;
 import org.springframework.stereotype.Controller;
@@ -58,10 +59,11 @@ public class RouteController extends BaseController{
     @RequestMapping(value = "gtp")
     public ModelAndView goGameThirdPart(){
         PageData pd = this.getPageData();
-        MapConstant mapConstant = routeBiz.mapAddress(pd);
+        MapConstant mapConstant = routeBiz.mapAddressData(pd);
         ModelAndView mv = new ModelAndView();
         mv.setViewName("data/third_part");
         mv.addObject("mc", mapConstant);
+        mv.addObject("pd", pd);
         return mv;
     }
 
@@ -110,6 +112,52 @@ public class RouteController extends BaseController{
         PageData pd = this.getPageData();
         return gamePubChatBiz.pubChat(pd);
     }
+
+    /***
+     * 前往npc列表
+     * 接受npc任务 或 和npcPK
+     * @return
+     */
+    @RequestMapping(value = "gnl")
+    public ModelAndView goNpcList(){
+        ModelAndView mv = new ModelAndView();
+        PageData pd = this.getPageData();
+        List<Map<String, String>> list = routeBiz.getNpcsById(pd);
+        mv.setViewName("/data/npc_list");
+        mv.addObject("list", list);
+        return mv;
+    }
+
+    /***
+     * 前往单个npc页面
+     * 进行PK
+     * @return
+     */
+    @RequestMapping(value = "gcn")
+    public ModelAndView goCurrentNpc(){
+        ModelAndView mv = new ModelAndView();
+        PageData pd = this.getPageData();
+        GameNpc gameNpc = routeBiz.getCurrentNpcByCode(pd);
+        mv.setViewName("data/current_npc_info");
+        mv.addObject("gn", gameNpc);
+        return mv;
+    }
+
+    /***
+     * 前往当前位置玩家列表
+     * 和玩家互动
+     * @return
+     */
+    @RequestMapping(value = "gudl")
+    public ModelAndView goUserAddressList(){
+        ModelAndView mv = new ModelAndView();
+        PageData pd = this.getPageData();
+        List<Map<String, String>> list = routeBiz.getUsersByRiskCode((String) pd.get("a_c"));
+        mv.setViewName("/data/user_address_list");
+        mv.addObject("list", list);
+        return mv;
+    }
+
 
 
 

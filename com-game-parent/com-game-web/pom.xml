@@ -27,6 +27,6 @@
     </dependencies>
 
     <build>
-        <finalName>game_word</finalName>
+        <finalName>g_w</finalName>
     </build>
 </project>

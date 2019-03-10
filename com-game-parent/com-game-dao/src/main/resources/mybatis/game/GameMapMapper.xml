@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.GameMapDao">
+
+    <select id="getOne" parameterType="java.lang.String" resultType="com.game.entity.GameMap">
+        SELECT
+        id AS id,
+        address_code AS addressCode,
+        address_name AS addressName,
+        text AS text,
+        npc_code AS npcCode,
+        npc_name AS npcName,
+        npc_plan_code_name AS npcPlanCodeName,
+        npc_plan_code_name1 AS npcPlanCodeName1,
+        direction AS direction
+        FROM game_map
+        WHERE
+        address_code = #{addressCode}
+    </select>
+
+    <select id="getCon" parameterType="com.game.entity.GameMap" resultType="com.game.entity.GameMap">
+        SELECT
+        id AS id,
+        address_code AS addressCode,
+        address_name AS addressName,
+        text AS text,
+        npc_code AS npcCode,
+        npc_name AS npcName,
+        npc_plan_code_name AS npcPlanCodeName,
+        npc_plan_code_name1 AS npcPlanCodeName1,
+        direction AS direction
+        FROM game_map
+        <where>
+            <if test="null!=id">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+
+</mapper>

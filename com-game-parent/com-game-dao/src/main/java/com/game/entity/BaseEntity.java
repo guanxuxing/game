@@ -17,4 +17,8 @@ public class BaseEntity {
     private Long updateTime;
     private Long addUser;
     private Long updateUser;
+
+    private String code;
+    private String name;
+    private String desc;
 }

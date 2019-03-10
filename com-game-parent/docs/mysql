@@ -33,6 +33,7 @@
 怪兽等级表  : game_monster_level
 门派信息    : game_school
 武功信息    : game_gest
+武功招式    : game_art
 门派武功信息: game_school_gest
 商店信息表  : game_store
 当铺信息表  : game_popshop
@@ -40,6 +41,8 @@
 物品信息表  : game_goods
 地图信息表  : game_map
 公共聊天    : game_pub_chat
+npc         : game_npc
+主线任务    : game_plan
 
 2：玩家信息表
 玩家记录:     game_user_action_log
