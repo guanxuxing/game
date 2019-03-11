@@ -15,4 +15,5 @@ public class GameGoods extends BaseEntity {
     private Double price;
     private String priceDesc;
     private Integer type;
+    private Integer maxBuy;
 }

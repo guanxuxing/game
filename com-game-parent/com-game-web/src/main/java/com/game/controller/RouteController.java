@@ -1,10 +1,13 @@
 package com.game.controller;
 
+import com.game.biz.GameGoodsBiz;
 import com.game.biz.GamePubChatBiz;
 import com.game.biz.RouteBiz;
 import com.game.common.CommonResponse;
 import com.game.controller.base.BaseController;
+import com.game.entity.GameGoods;
 import com.game.entity.GameNpc;
+import com.game.util.Constant;
 import com.game.util.MapConstant;
 import com.game.util.PageData;
 import org.springframework.stereotype.Controller;
@@ -28,6 +31,9 @@ public class RouteController extends BaseController{
 
     @Resource
     private GamePubChatBiz gamePubChatBiz;
+
+    @Resource
+    private GameGoodsBiz gameGoodsBiz;
 
     /***
      * 前往游戏一区
@@ -155,6 +161,42 @@ public class RouteController extends BaseController{
         List<Map<String, String>> list = routeBiz.getUsersByRiskCode((String) pd.get("a_c"));
         mv.setViewName("/data/user_address_list");
         mv.addObject("list", list);
+        return mv;
+    }
+
+    /**
+     * 去往商店
+     * @return
+     */
+    @RequestMapping(value = "gs")
+    public ModelAndView goStore(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("data/store");
+        return mv;
+    }
+
+    /***
+     * 浏览商店物品
+     * @return
+     */
+    @RequestMapping(value = "ssl")
+    public ModelAndView showStoreList(){
+        ModelAndView mv = new ModelAndView();
+        List<GameGoods> list = gameGoodsBiz.getListByType(Constant.GOODS_0);
+        mv.setViewName("data/store_list");
+        mv.addObject("sl", list);
+        return mv;
+    }
+
+    /***
+     * 前往单个商品页面进行商品购买
+     * @return
+     */
+    @RequestMapping(value = "gbg")
+    public ModelAndView goBuyGoods (){
+        PageData pd = this.getPageData();
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("data/buy_goods");
         return mv;
     }
 

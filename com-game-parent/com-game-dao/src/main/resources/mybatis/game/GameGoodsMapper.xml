@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.GameGoodsDao">
+
+    <select id="getListByType" parameterType="java.lang.Integer" resultType="com.game.entity.GameGoods">
+        SELECT
+        id AS id,
+        `code` AS  `code`,
+        `name` AS `name`,
+        price AS price,
+        price_desc AS priceDesc,
+        `type` AS `type`,
+        `desc` AS `desc`,
+        max_buy AS maxBuy
+        FROM game_goods
+        WHERE
+        `type` = #{type}
+    </select>
+
+</mapper>
