@@ -3,6 +3,7 @@
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <title>夺宝中华侠客行-一区</title>
 </head>

@@ -16,5 +16,9 @@ public class GameUser extends BaseEntity  {
     private String userName;
     private String passWord;
     private String mark;
+    private Double account;
+    private Long schoolId;
+    private Long userExper;
+    private Long leftNum;
 
 }

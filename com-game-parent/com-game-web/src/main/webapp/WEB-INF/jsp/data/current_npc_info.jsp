@@ -7,6 +7,7 @@
 <html>
 <head>
     <base href="<%=basePath%>"><!-- jsp文件头和头部 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <title>cni</title>
 </head>

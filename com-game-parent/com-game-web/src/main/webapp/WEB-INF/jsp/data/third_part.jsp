@@ -7,6 +7,7 @@
 <html>
 <head>
     <base href="<%=basePath%>"><!-- jsp文件头和头部 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>夺宝中华侠客行-三区</title>
 </head>
 <body>
@@ -44,7 +45,7 @@
     请选择你的行走方向：
     <div style="text-align:center;">
         <c:forEach items="${mc.directionAim}" var="item">
-           <div style="text-align:${item.align}"> 【<a href="<%=basePath%>route/gtp?riskCode=${item.code}"> ${item.name} - ${item.aim} </a>】 </div>
+           <div style="text-align:${item.align}"> 【<a href="<%=basePath%>route/gtp?riskCode=${item.code}"> ${item.aim} </a>】 </div>
         </c:forEach>
     </div>
 </c:when>
@@ -53,23 +54,20 @@
 </c:otherwise>
 </c:choose>
 
-<a href="/db0.jsp?_cmd=27+">任务</a>|
-<a href="/db0.jsp?_cmd=28+">状态</a>|
-<a href="/db0.jsp?_cmd=29+">个人</a>|
-<a href="/db0.jsp?_cmd=30+">武功</a><br/>
-<a href="/db0.jsp?_cmd=31+">心法</a>|
-<a href="/db0.jsp?_cmd=32+">物品</a>|
-<a href="route/gopchat">公聊</a>|
-<a href="/db0.jsp?_cmd=34+">交流</a><br/>
-<a href="/db0.jsp?_cmd=35+">关系</a>|
-<a href="/db0.jsp?_cmd=36+">帮派</a>|
-<a href="/db0.jsp?_cmd=37+">双倍</a>|
-<a href="/db0.jsp?_cmd=38+">帮助</a><br/>
-<a href="/db0.jsp?_cmd=39+">新手引导</a>|||
-<a href="/db0.jsp?_cmd=40+">环顾四方</a><br/>
-<a href="/db0.jsp?_cmd=41+">返回长安客栈</a><br/>
-<a href="/db0.jsp?_cmd=42+">返回首页</a>|||
-<a href="/db0.jsp?_cmd=43+">元宝商城</a>
+<a href="">状态/信息</a><br/>
+<a href="">新手指引</a><br/>
+<a href="">环顾四方</a><br/>
+<a href="">返回首页</a><br/>
+<a href="">元宝商城</a><br/>
+<a href="">夺宝中华官网</a><br/>
+<%--
+状态/信息
+<a href="">身体状态</a><br/>
+<a href="">个人信息</a><br/>
+<a href="">随身物品</a><br/>
+<a href="">双倍修行</a><br/>
+<a href="">交流信息</a><br/>--%>
+
 <br/>
 <br/>
 

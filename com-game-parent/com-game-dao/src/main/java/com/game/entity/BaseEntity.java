@@ -21,4 +21,5 @@ public class BaseEntity {
     private String code;
     private String name;
     private String desc;
+    private Long levelNum;
 }
