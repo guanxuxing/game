@@ -54,9 +54,10 @@
 </c:otherwise>
 </c:choose>
 
-<a href="">状态/信息</a><br/>
+<a href="<%=basePath%>route/spi">状态/信息</a><br/>
 <a href="<%=basePath%>route/gs">商店</a><br/>
 <a href="<%=basePath%>route/gds">药铺</a><br/>
+<a href="<%=basePath%>route/si">帮派</a><br/>
 <a href="">新手指引</a><br/>
 <a href="">环顾四方</a><br/>
 <a href="">返回首页</a><br/>

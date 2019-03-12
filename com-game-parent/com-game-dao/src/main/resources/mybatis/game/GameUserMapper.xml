@@ -79,10 +79,12 @@
 
     <!-- 查询玩家物品、装备信息 -->
     <select id="getUserGoods" parameterType="java.lang.Long" resultType="java.util.Map">
-       SELECT b.`name` AS goods_name, a.`goods_num`,a.`user_id`
+       SELECT b.name AS goods_name,
+       a.goods_num,
+       a.user_id
        FROM game_user_goods a
-       LEFT JOIN game_goods b ON a.`goods_id` = b.`id`
-       WHERE a.`user_id` = #{userId]
+       LEFT JOIN game_goods b ON a.goods_id = b.id
+       WHERE a.user_id = #{userId}
     </select>
 
 </mapper>

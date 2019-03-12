@@ -1,12 +1,11 @@
 package com.game.controller;
 
-import com.game.biz.GameGoodsBiz;
-import com.game.biz.GamePubChatBiz;
-import com.game.biz.RouteBiz;
+import com.game.biz.*;
 import com.game.common.CommonResponse;
 import com.game.controller.base.BaseController;
 import com.game.entity.GameGoods;
 import com.game.entity.GameNpc;
+import com.game.entity.GameSchool;
 import com.game.util.Constant;
 import com.game.util.MapConstant;
 import com.game.util.PageData;
@@ -34,6 +33,12 @@ public class RouteController extends BaseController{
 
     @Resource
     private GameGoodsBiz gameGoodsBiz;
+
+    @Resource
+    private GameSchoolBiz gameSchoolBiz;
+
+    @Resource
+    private GameUserBiz gameUserBiz;
 
     /***
      * 前往游戏一区
@@ -237,6 +242,47 @@ public class RouteController extends BaseController{
     public CommonResponse buyGoods(){
         PageData pd = this.getPageData();
         return gameGoodsBiz.buyGoods(pd);
+    }
+
+    /***
+     * 帮派首页
+     * @return
+     */
+    @RequestMapping(value = "si")
+    public ModelAndView schoolIndex(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("data/school_index");
+        return mv;
+    }
+
+    /***
+     * 帮派排行
+     * 帮派列表信息
+     * @return
+     */
+    @RequestMapping(value = "sl")
+    public ModelAndView schoolList(){
+        ModelAndView mv = new ModelAndView();
+        PageData pd = this.getPageData();
+        List<GameSchool> list = gameSchoolBiz.getSchoolList(pd);
+        mv.setViewName("data/school_list");
+        mv.addObject("list", list);
+        return mv;
+    }
+
+    /***
+     * 状态/信息页面
+     * 显示个人信息
+     * @return
+     */
+    @RequestMapping(value = "spi")
+    public ModelAndView showPersonInfo(){
+        PageData pd = this.getPageData();
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("data/person_info");
+        Map<String, Object> map = gameUserBiz.getUserInfo(pd);
+        mv.addObject("ugs", (List<Map<String, String>>)map.get("ugs"));
+        return mv;
     }
 
 }

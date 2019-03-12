@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -98,5 +99,13 @@ public class GameUserBizImpl implements GameUserBiz {
             }
         }
         return commonResponse;
+    }
+
+    public Map<String, Object> getUserInfo(PageData pd) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        GameUser gameUser = Session.getCurrentUser();
+        List<Map<String, String>> userGoods = gameUserDao.getUserGoods(gameUser.getId());
+        map.put("ugs", userGoods);
+        return map;
     }
 }
