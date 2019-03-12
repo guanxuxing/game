@@ -32,9 +32,11 @@
 怪兽装备表  : game_monster_equuipped
 怪兽等级表  : game_monster_level
 门派信息    : game_school
+师傅信息    : game_master
 武功信息    : game_gest
 武功招式    : game_art
-门派武功信息: game_school_gest
+门派武功信息: game_school_master_gest
+武功-招式   : game_gest_art
 商店信息表  : game_store
 当铺信息表  : game_popshop
 药铺信息表  : game_drug_shop

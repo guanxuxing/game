@@ -189,18 +189,54 @@ public class RouteController extends BaseController{
     }
 
     /***
-     * 前往单个商品页面进行商品购买
+     * 前往单个商品页面进行商品/药品购买
      * @return
      */
     @RequestMapping(value = "gbg")
     public ModelAndView goBuyGoods (){
         PageData pd = this.getPageData();
         ModelAndView mv = new ModelAndView();
+        GameGoods gameGoods = gameGoodsBiz.getOne(pd);
         mv.setViewName("data/buy_goods");
+        mv.addObject("ggs", gameGoods);
         return mv;
     }
 
+    /***
+     * 前往药铺页面
+     * @return
+     */
+    @RequestMapping(value = "gds")
+    public ModelAndView goDrupShop() {
+        ModelAndView mv = new ModelAndView();
+        PageData pd = this.getPageData();
+        mv.setViewName("data/drug_shop");
+        return mv;
+    }
 
+    /***
+     * 前往药铺列表
+     * @return
+     */
+    @RequestMapping(value = "bdgs")
+    public ModelAndView buyDrugGoods(){
+        ModelAndView mv = new ModelAndView();
+        PageData pd = this.getPageData();
+        List<GameGoods> list = gameGoodsBiz.getListByType(Constant.GOODS_1);
+        mv.setViewName("data/drug_shop_list");
+        mv.addObject("sl", list);
+        return mv;
+    }
 
+    /***
+     * 购买商品接口
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "bg")
+    public CommonResponse buyGoods(){
+        PageData pd = this.getPageData();
+        return gameGoodsBiz.buyGoods(pd);
+    }
 
 }

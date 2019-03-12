@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.GameUserGestArtDao">
+
+    <!-- 选择武功， 学习武功招式 -->
+    <update id="addUserGestArt" parameterType="com.game.entity.GameUserGestArt">
+        INSERT game_user_gest_art
+        (user_id, gest_id, art_id)
+        VALUES
+        ( #{userId}, #{gestId}, #{art_id})
+    </update>
+
+
+</mapper>

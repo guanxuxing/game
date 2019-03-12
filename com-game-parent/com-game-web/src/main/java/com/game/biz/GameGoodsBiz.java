@@ -1,6 +1,8 @@
 package com.game.biz;
 
+import com.game.common.CommonResponse;
 import com.game.entity.GameGoods;
+import com.game.util.PageData;
 
 import java.util.List;
 
@@ -10,5 +12,9 @@ import java.util.List;
 public interface GameGoodsBiz {
 
     public List<GameGoods> getListByType(Integer type);
+
+    public GameGoods getOne(PageData pd);
+
+    public CommonResponse buyGoods(PageData pd);
 
 }

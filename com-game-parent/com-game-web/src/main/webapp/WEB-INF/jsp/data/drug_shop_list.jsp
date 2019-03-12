@@ -11,9 +11,9 @@
     <title>t</title>
 </head>
 <body>
--- 商品 --
+-- 药品 --
 <c:forEach items="${sl}" var="item">
-<p>   <a href="<%=basePath%>route/gbg?g_id=${item.id}"> ${item.name} ${item.priceDesc} </a> </p>
+  <p> <a href="<%=basePath%>route/gbg?g_id=${item.id}"> ${item.name} ${item.priceDesc} </a> </p>
 </c:forEach>
 
 <a href="/db2.jsp?_cmd=95+">返回</a><br/><a href="/db2.jsp?_cmd=96+">返回游戏</a><br/>

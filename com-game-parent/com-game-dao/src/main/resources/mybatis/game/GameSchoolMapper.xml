@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.GameSchoolDao">
+
+    <!-- 查询所有门派信息 -->
+    <select id="getSchoolList" resultType="com.game.entity.GameSchool">
+        SELECT
+        `code` AS `code`,
+        `name` AS `name`,
+        `desc` AS `desc`,
+        current_num AS currentNum,
+        max_num AS maxNum
+        FROM game_school
+    </select>
+
+    <!-- 根据门派查询当前门派下的所有师傅 -->
+    <select id="getMasterListBySchoolId" parameterType="java.lang.Long" resultType="java.util.Map">
+        SELECT
+        b.`name` AS schoolName,
+        c.`name` AS masterName ,
+        b.`id` AS schoolId,
+        c.`id` AS masterId
+        FROM game_school_master_gest a
+        LEFT JOIN game_school b ON a.`school_id` = b.`id`
+        LEFT JOIN game_master c ON a.`master_id` = c.`id`
+        WHERE b.`id` = #{schoolId}
+    </select>
+
+    <!-- 根据师傅id 查询师傅所属武功 -->
+    <select id="getGestListByMasterId" parameterType="java.lang.Long" resultType="java.util.Map">
+      SELECT
+      b.`name` AS masterName,
+      c.`name` AS gestName,
+      b.`id` AS masterId,
+      c.`id` AS gestId
+      FROM game_school_master_gest a
+      LEFT JOIN game_master b ON a.`master_id` = b.`id`
+      LEFT JOIN game_gest c ON a.`gest_id` = c.`id`
+      WHERE b.`id` = #{masterId}
+    </select>
+
+    <!-- 根据武功id 查询所属招式 -->
+    <select id="getArtListByGestId" parameterType="java.lang.Long" resultType="java.util.Map">
+      SELECT b.`name` AS gestName, c.`name` AS artName, b.`id` AS gestId, c.id AS artid
+      FROM game_gest_art a
+      LEFT JOIN game_gest b ON a.`gest_id` = b.`id`
+      LEFT JOIN game_art c ON a.`art_id` = c.`id`
+      WHERE b.id = #{gestId}
+    </select>
+
+</mapper>

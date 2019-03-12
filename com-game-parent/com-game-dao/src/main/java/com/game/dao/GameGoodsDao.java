@@ -10,4 +10,6 @@ public interface GameGoodsDao {
 
     public List<GameGoods> getListByType(Integer type);
 
+    public GameGoods getOne(Long id);
+
 }

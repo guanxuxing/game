@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.game.dao.GameUserGoodsDao">
+
+    <insert id="addObject" parameterType="com.game.entity.GameUserGoods">
+        INSERT INTO
+        game_user_goods
+        (user_id, goods_id, goods_num, add_time)
+        VALUES
+        (#{userId}, #{goodsId}, #{goodsNum}, #{addTime})
+    </insert>
+
+    <update id="updateObject" parameterType="com.game.entity.GameUserGoods">
+        UPDATE game_user_goods
+        SET goods_num = #{goodsNum}, update_time = #{updateTime }
+        WHERE user_id = #{userId} AND goods_id = #{goodsId}
+    </update>
+
+    <select id="getObject" parameterType="com.game.entity.GameUserGoods" resultType="com.game.entity.GameUserGoods">
+        SELECT
+        id AS id,
+        user_id AS userId,
+        goods_id AS goodsId,
+        goods_num AS goodsNum
+        FROM game_user_goods
+        WHERE user_id = #{userId} AND goods_id = #{goodsId}
+    </select>
+
+</mapper>

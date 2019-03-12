@@ -7,7 +7,12 @@
         id AS id,
         mobile AS mobile,
         user_name AS userName,
-        pass_word AS passWord
+        pass_word AS passWord,
+        level_num AS levelNum,
+        account AS account,
+        school_id AS schoolId,
+        user_exper AS userExper,
+        life_num AS lifeNum
         FROM game_user
         WHERE
         user_name = #{userName}
@@ -28,5 +33,56 @@
         SET pass_word = #{newPassWord},mark= #{mark}, update_time = #{updateTime}
         WHERE user_name = #{userName} AND pass_word = #{oldPassWord}
     </update>
+
+    <update id="updateAccount" parameterType="com.game.entity.GameUser">
+        UPDATE game_user
+        SET account = #{account}, update_time = #{updateTime}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 参加门派 -->
+    <update id="updateSchool" parameterType="com.game.entity.GameUser">
+        UPDATE game_user SET school_id = #{schoolId} WHERE id = #{id}
+    </update>
+
+    <!-- 拜师 -->
+    <update id="updateMaster" parameterType="com.game.entity.GameUser">
+        UPDATE game_user set master_id = #{masterId} WHERE id = #{id}
+    </update>
+
+    <!-- 查询玩家门派信息 -->
+    <select id="getUserSchool" parameterType="java.lang.Long" resultType="java.util.Map">
+       SELECT a.`user_name` ,
+       a.`nick_name` ,
+       b.id AS school_id,
+       b.`name` AS school_name ,
+       c.`id` AS master_id,
+       c.`name` AS master_name
+       FROM game_user a
+       LEFT JOIN game_school b ON a.`school_id` = b.`id`
+       LEFT JOIN game_master c ON a.`master_id` = c.`id`
+       WHERE a.id = #{userId}
+    </select>
+
+    <!-- 查询玩家武功招式信息 -->
+    <select id="getUserGest" parameterType="java.lang.Long" resultType="java.util.Map">
+       SELECT
+       b.`name` AS gest_name,
+       b.`id` AS gest_id,
+       c.`id` AS art_id,
+       c.`name` AS art_name
+       FROM game_user_gest_art a
+       LEFT JOIN game_gest b ON a.`gest_id` = b.`id`
+       LEFT JOIN game_art c ON a.`art_id` = c.`id`
+       WHERE a.`user_id` = #{userId}
+    </select>
+
+    <!-- 查询玩家物品、装备信息 -->
+    <select id="getUserGoods" parameterType="java.lang.Long" resultType="java.util.Map">
+       SELECT b.`name` AS goods_name, a.`goods_num`,a.`user_id`
+       FROM game_user_goods a
+       LEFT JOIN game_goods b ON a.`goods_id` = b.`id`
+       WHERE a.`user_id` = #{userId]
+    </select>
 
 </mapper>

@@ -17,4 +17,19 @@
         `type` = #{type}
     </select>
 
+    <select id="getOne" parameterType="java.lang.Long" resultType="com.game.entity.GameGoods">
+         SELECT
+        id AS id,
+        `code` AS  `code`,
+        `name` AS `name`,
+        price AS price,
+        price_desc AS priceDesc,
+        `type` AS `type`,
+        `desc` AS `desc`,
+        max_buy AS maxBuy
+        FROM game_goods
+        WHERE
+        id = #{id}
+    </select>
+
 </mapper>
