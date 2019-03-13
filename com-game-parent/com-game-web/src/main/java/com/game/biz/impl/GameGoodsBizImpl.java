@@ -104,4 +104,15 @@ public class GameGoodsBizImpl implements GameGoodsBiz {
         return commonResponse;
     }
 
+    /***
+     * 使用装备
+     * 用户能量增加
+     * 用户商品数量减少
+     * @param pd
+     * @return
+     */
+    public CommonResponse useGoods(PageData pd){
+        return null;
+    }
+
 }

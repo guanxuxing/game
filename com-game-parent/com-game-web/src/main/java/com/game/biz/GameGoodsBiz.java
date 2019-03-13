@@ -17,4 +17,6 @@ public interface GameGoodsBiz {
 
     public CommonResponse buyGoods(PageData pd);
 
+    public CommonResponse useGoods(PageData pd);
+
 }

@@ -329,4 +329,16 @@ public class RouteController extends BaseController{
         return mv;
     }
 
+    /***
+     * 使用物品
+     * 增加用户能量，防御力
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "ugs_01")
+    public CommonResponse useGoods(){
+        PageData pd = this.getPageData();
+        return gameGoodsBiz.useGoods(pd);
+    }
+
 }

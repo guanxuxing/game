@@ -14,7 +14,7 @@
 <!-- 物品里面就只有装备，药品跟钱，别的没有 -->
 【个人物品信息】<br/>
 <c:forEach items="${ugs}" var="item">
-    名称:<a href="<%=basePath%>route/gugs?goodsId=${item.goodsId}"> ${item.goods_name}</a>  数量:${item.goods_num} <br/>
+    名称:<a href="<%=basePath%>route/gugs?gs_id=${item.goods_id}"> ${item.goods_name}</a>  数量:${item.goods_num} <br/>
 </c:forEach>
 <br/>
 <a href="/db2.jsp?_cmd=62+">返回</a><br/>

@@ -4,6 +4,7 @@ import com.game.biz.GameUserBiz;
 import com.game.common.CommonResponse;
 import com.game.controller.base.Session;
 import com.game.dao.GameUserDao;
+import com.game.entity.Game;
 import com.game.entity.GameUser;
 import com.game.util.Constant;
 import com.game.util.PageData;
@@ -104,7 +105,10 @@ public class GameUserBizImpl implements GameUserBiz {
     public Map<String, Object> getUserInfo(PageData pd) {
         Map<String, Object> map = new HashMap<String, Object>();
         GameUser gameUser = Session.getCurrentUser();
-        List<Map<String, String>> userGoods = gameUserDao.getUserGoods(gameUser.getId(), null);
+        Game game = new Game();
+        game.setUserId(gameUser.getId());
+        game.setGoodsId(null);
+        List<Map<String, String>> userGoods = gameUserDao.getUserGoods(game);
         map.put("ugs", userGoods);
         return map;
     }
@@ -112,8 +116,14 @@ public class GameUserBizImpl implements GameUserBiz {
     // 玩家个人商品信息
     public List<Map<String, String>> getUserPersonGoods (PageData pd) {
         GameUser gameUser = Session.getCurrentUser();
-        List<Map<String, String>> userGoods = gameUserDao.getUserGoods(gameUser.getId(),
-                null==pd.get("goodsId")?null:Long.valueOf(pd.get("goodsId").toString()));
+        Game game = new Game();
+        game.setUserId(gameUser.getId());
+        Long goodsId = null;
+        if (null!=pd.get("gs_id")) {
+            goodsId = Long.valueOf(pd.get("gs_id").toString());
+        }
+        game.setGoodsId(goodsId);
+        List<Map<String, String>> userGoods = gameUserDao.getUserGoods(game);
         return userGoods;
     }
 

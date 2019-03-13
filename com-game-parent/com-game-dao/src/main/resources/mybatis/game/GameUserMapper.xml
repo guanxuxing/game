@@ -89,13 +89,15 @@
        SELECT
        b.id AS goods_id,
        b.name AS goods_name,
+        b.use_type AS use_type,
+        b.use_num AS use_num,
        a.goods_num,
        a.user_id
        FROM game_user_goods a
        LEFT JOIN game_goods b ON a.goods_id = b.id
        WHERE a.user_id = #{userId}
        <if test="null!=goodsId">
-           b.id = #{goodsId}
+          AND b.id = #{goodsId}
        </if>
     </select>
 
