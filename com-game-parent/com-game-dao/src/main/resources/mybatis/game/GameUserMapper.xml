@@ -6,13 +6,20 @@
         SELECT
         id AS id,
         mobile AS mobile,
+        nick_name AS nickName,
         user_name AS userName,
-        pass_word AS passWord,
         level_num AS levelNum,
         account AS account,
         school_id AS schoolId,
-        user_exper AS userExper,
-        life_num AS lifeNum
+        master_id AS masterId,
+        current_exper_num AS currentExperNum,
+        max_exper_num AS maxExperNum,
+        current_life_num AS currentLifeNum,
+        max_life_num AS maxLifeNum,
+        current_mind_num AS currentMindNum,
+        max_mind_num AS maxMindNum,
+        current_force_num AS currentForceNum,
+        max_force_num AS maxForceNum
         FROM game_user
         WHERE
         user_name = #{userName}
@@ -78,13 +85,18 @@
     </select>
 
     <!-- 查询玩家物品、装备信息 -->
-    <select id="getUserGoods" parameterType="java.lang.Long" resultType="java.util.Map">
-       SELECT b.name AS goods_name,
+    <select id="getUserGoods" parameterType="com.game.entity.Game" resultType="java.util.Map">
+       SELECT
+       b.id AS goods_id,
+       b.name AS goods_name,
        a.goods_num,
        a.user_id
        FROM game_user_goods a
        LEFT JOIN game_goods b ON a.goods_id = b.id
        WHERE a.user_id = #{userId}
+       <if test="null!=goodsId">
+           b.id = #{goodsId}
+       </if>
     </select>
 
 </mapper>

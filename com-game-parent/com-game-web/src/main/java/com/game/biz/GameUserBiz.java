@@ -5,6 +5,7 @@ import com.game.entity.GameUser;
 import com.game.util.PageData;
 import com.github.pagehelper.Page;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,4 +20,8 @@ public interface GameUserBiz {
     public CommonResponse upd(PageData pd);
 
     public Map<String, Object> getUserInfo(PageData pd);
+
+    public List<Map<String, String>> getUserPersonGoods (PageData pd);
+
+    public GameUser getUserPersonData (PageData pd);
 }

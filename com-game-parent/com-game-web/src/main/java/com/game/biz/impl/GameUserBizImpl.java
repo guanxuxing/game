@@ -104,8 +104,23 @@ public class GameUserBizImpl implements GameUserBiz {
     public Map<String, Object> getUserInfo(PageData pd) {
         Map<String, Object> map = new HashMap<String, Object>();
         GameUser gameUser = Session.getCurrentUser();
-        List<Map<String, String>> userGoods = gameUserDao.getUserGoods(gameUser.getId());
+        List<Map<String, String>> userGoods = gameUserDao.getUserGoods(gameUser.getId(), null);
         map.put("ugs", userGoods);
         return map;
+    }
+
+    // 玩家个人商品信息
+    public List<Map<String, String>> getUserPersonGoods (PageData pd) {
+        GameUser gameUser = Session.getCurrentUser();
+        List<Map<String, String>> userGoods = gameUserDao.getUserGoods(gameUser.getId(),
+                null==pd.get("goodsId")?null:Long.valueOf(pd.get("goodsId").toString()));
+        return userGoods;
+    }
+
+    // 玩家数据
+    public GameUser getUserPersonData (PageData pd){
+        GameUser gameUser = Session.getCurrentUser();
+        gameUser = gameUserDao.getOne(gameUser);
+        return gameUser;
     }
 }

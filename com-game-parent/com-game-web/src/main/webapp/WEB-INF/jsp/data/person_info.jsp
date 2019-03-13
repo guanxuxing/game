@@ -12,7 +12,17 @@
 </head>
 <body>
 <p>
-    【个人物品信息】<br/>
+
+    【 状态/信息 】 <br/>
+    <a href="">身体状态</a><br/>
+    <a href="">个人信息</a><br/>
+    <a href="<%=basePath%>route/spgs">随身物品</a><br/>
+    <a href="<%=basePath%>route/spd">个人数据</a><br/>
+    <a href="">双倍修行</a><br/>
+    <a href="">交流信息</a><br/>
+
+
+   <%-- 【个人物品信息】<br/>
     <c:forEach items="${ugs}" var="item">
       名称:<span style="color: blue">${item.goods_name}</span>  数量:<span style="color: blue">${item.goods_num}</span> <br/>
     </c:forEach>
@@ -26,7 +36,7 @@
     【生命值】 <br/>
     -----------<br/>
     【经验值】 <br/>
-    -----------<br/>
+    -----------<br/>--%>
     <a href="/db2.jsp?_cmd=62+">返回</a><br/>
     <a href="/db2.jsp?_cmd=63+">返回游戏</a><br/>
 </p>

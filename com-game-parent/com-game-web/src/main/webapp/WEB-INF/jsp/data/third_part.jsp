@@ -25,7 +25,7 @@
 <c:when test="${null!=mc}">
     <div>你来到了${mc.name}</div>
     <div>${mc.textDesc}</div>
-    <c:if test="${mc.npcCode!=null && ''!=mc.npcCode}">
+    <c:if test="${mc.planCodeName!=null && ''!=mc.planCodeName}">
         <div>
         你遇到了<%--<a href="<%=basePath%>route/gnl?a_c_id=${pd.a_c_id}"> ${mc.npcName}(npc) </a>--%>
             <c:forEach items="${mc.planCodeName}" var="item">
@@ -73,21 +73,6 @@
 
 <br/>
 <br/>
-
-
-<%--    <br/>【<a href="/db2.jsp?_cmd=7+">打怪</a>|
-    <a href="/db2.jsp?_cmd=8+">捡钱</a>|<a href="/db2.jsp?_cmd=9+">挂机</a>|
-    <a href="/db2.jsp?_cmd=10+">竞技</a>】<br/> <br/>【<a href="/db2.jsp?_cmd=11+">拜玩家为师</a>|
-    <a href="/db2.jsp?_cmd=12+">群芳楼</a>】<br/> <br/>【<a href="/db2.jsp?_cmd=13+">商店</a>|
-    <a href="/db2.jsp?_cmd=14+">钱庄</a>|<a href="/db2.jsp?_cmd=15+">当铺</a>|
-    <a href="/db2.jsp?_cmd=16+">药铺</a>】<br/> <br/>【<a href="/db2.jsp?_cmd=17+">买心法</a>|
-    <a href="/db2.jsp?_cmd=18+">黑市</a>|<a href="/db2.jsp?_cmd=19+">论坛</a>】
-    <br/> <br/>【<a href="/db2.jsp?_cmd=20+">排行</a>|<a href="/db2.jsp?_cmd=21+">帮助</a>|
-    <a href="/db2.jsp?_cmd=22+">公告</a>】<br/>--%>
- <%--   <br/>【<a href="/db2.jsp?_cmd=23+">我的推广链接</a>】
-    <br/> <br/>本站网址：xk007.cn<br/>将本页存为书签，可以免登陆<br/>玩家交流QQ群：228462227 ，新手加群就送30两黄金
-    <br/>本页包含你的账号和密码信息，请不要发送链接给别人<br/>苹果自带safari浏览器字体会忽大忽小，建议下载UC或QQ浏览器访问本站
-    <br/><br/>--%>
 
 </p>
 </body>

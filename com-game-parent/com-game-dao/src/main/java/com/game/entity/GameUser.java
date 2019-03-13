@@ -13,12 +13,21 @@ import lombok.ToString;
 public class GameUser extends BaseEntity  {
 
     private String mobile;
+    private String nickName;
     private String userName;
     private String passWord;
     private String mark;
+    private Long levelNum;
     private Double account;
     private Long schoolId;
-    private Long userExper;
-    private Long leftNum;
+    private Long masterId;
+    private Long currentExperNum;
+    private Long maxExperNum;
+    private Long currentLifeNum;
+    private Long maxLifeNum;
+    private Long currentMindNum;
+    private Long maxMindNum;
+    private Long currentForceNum;
+    private Long maxForceNum;
 
 }

@@ -33,7 +33,7 @@ public class RouteBizImpl implements RouteBiz {
     @Resource
     private GameNpcDao gameNpcDao;
 
-    public static final String MAP_FIRST_RISK = "0";
+    public static final String MAP_FIRST_RISK = "1";
 
 
 

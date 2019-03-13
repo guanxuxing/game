@@ -19,7 +19,7 @@
 <a href="/db1.jsp?_cmd=59+">唐门第一代长老连天</a><br/>
 <a href="/db1.jsp?_cmd=60+">魔教第一代长老「身无彩凤双飞翼」遥控器&lt;睡眠中&gt;</a><br/>--%>
     <c:forEach items="${list}" var="item">
-       【 <a href="<%=basePath%>route/gcn?n_c=${item.npcCode}">(${item.npcCode})${item.npcName}</a> 】<br/>
+       【 <a href="<%=basePath%>route/gcn?n_c=${item.npcCode}">${item.npcName}</a> 】<br/>
     </c:forEach>
 <a href="/db1.jsp?_cmd=61+">返回</a><br/>
 <a href="/db1.jsp?_cmd=62+">返回游戏</a><br/>

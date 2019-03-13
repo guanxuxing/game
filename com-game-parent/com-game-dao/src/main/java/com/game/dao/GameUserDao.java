@@ -1,5 +1,6 @@
 package com.game.dao;
 
+import com.game.entity.Game;
 import com.game.entity.GameUser;
 
 import java.util.List;
@@ -26,5 +27,5 @@ public interface GameUserDao {
 
     public List<Map<String, String>> getUserGest(Long userId);
 
-    public List<Map<String, String>> getUserGoods(Long userId);
+    public List<Map<String, String>> getUserGoods(Game game);
 }

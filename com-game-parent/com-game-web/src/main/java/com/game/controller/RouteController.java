@@ -6,6 +6,7 @@ import com.game.controller.base.BaseController;
 import com.game.entity.GameGoods;
 import com.game.entity.GameNpc;
 import com.game.entity.GameSchool;
+import com.game.entity.GameUser;
 import com.game.util.Constant;
 import com.game.util.MapConstant;
 import com.game.util.PageData;
@@ -282,6 +283,49 @@ public class RouteController extends BaseController{
         mv.setViewName("data/person_info");
         Map<String, Object> map = gameUserBiz.getUserInfo(pd);
         mv.addObject("ugs", (List<Map<String, String>>)map.get("ugs"));
+        return mv;
+    }
+
+    /***
+     * 个人物品
+     * @return
+     */
+    @RequestMapping(value = "spgs")
+    public ModelAndView showPersonGoods(){
+        PageData pd = this.getPageData();
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("data/person_goods");
+        List<Map<String, String>> userPersonGoods = gameUserBiz.getUserPersonGoods(pd);
+        mv.addObject("ugs", userPersonGoods);
+        return mv;
+    }
+
+    /***
+     * 玩家数据
+     * 生命值 精神值 内力 潜能
+     * @return
+     */
+    @RequestMapping(value = "spd")
+    public ModelAndView showPersonData(){
+        PageData pd = this.getPageData();
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("data/person_life_data");
+        GameUser gameUser = gameUserBiz.getUserPersonData(pd);
+        mv.addObject("gu", gameUser);
+        return mv;
+    }
+
+    /***
+     * 前往商品使用页面
+     * @return
+     */
+    @RequestMapping(value = "gugs")
+    public ModelAndView goUseGoods(){
+        PageData pd = this.getPageData();
+        List<Map<String, String>> userPersonGoods = gameUserBiz.getUserPersonGoods(pd);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("data/use_goods");
+        mv.addObject("ugs", userPersonGoods);
         return mv;
     }
 
